@@ -26,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Add your domain name here
-ALLOWED_HOSTS = ['portfolio-5n42.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['portfolio-5n42.onrender.com', 'localhost', '127.0.0.1', '.onrender.com']
 
 
 

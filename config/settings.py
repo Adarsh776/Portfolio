@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
-import os
-import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'cloudinary', 
+    'cloudinary_storage'
 ]
 
 MIDDLEWARE = [
@@ -82,10 +83,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',  # For local development
-        conn_max_age=600,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),  # Replace with your PostgreSQL password
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+    }
 }
 
 

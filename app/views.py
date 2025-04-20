@@ -29,7 +29,7 @@ class ContactView(View):
         if form.is_valid():
             form.save()
 
-            # ✅ Send email notification to yourself
+            #  Send email notification to yourself
             subject = "New Contact Form Submission"
             message = f"""
             Name: {form.cleaned_data['name']}

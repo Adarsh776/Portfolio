@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% block title %}Adarsh Portfolio{% endblock %}
+{%load static%}
+
+{% block content %}
+<!-- HERO SECTION (Top Banner) -->
+<section class="hero-section" data-aos="fade-up">
+
+<svg id="svg-eye" viewBox="0 0 200 200" width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- Wrapping moving parts in this group -->
+  <g id="eye-group">
+    <!-- Outer Skin Ring (Eyelid Frame with bevel effect) -->
+    <circle cx="100" cy="100" r="95" fill="url(#lid3D)" />
+
+    <!-- Inner Shadow Ring to give inset depth -->
+    <circle cx="100" cy="100" r="82" fill="none" stroke="url(#lidShadow)" stroke-width="10" />
+
+    <!-- Sclera (White Ball) -->
+    <circle cx="100" cy="100" r="80" fill="url(#sclera3D)" stroke="#ddd" stroke-width="0.5" />
+
+    <!-- Iris -->
+    <circle cx="100" cy="100" r="35" fill="url(#irisGradient)" />
+
+    <!-- Pupil -->
+    <circle id="pupil" cx="100" cy="100" r="12" fill="#111" />
+
+    <!-- Highlight -->
+    <ellipse cx="85" cy="85" rx="10" ry="6" fill="white" opacity="0.2" />
+
+    <!-- Glow ring -->
+    <circle cx="100" cy="100" r="50" fill="none" stroke="#00bcd4" stroke-width="3" opacity="0.15" />
+    
+   </g>
+
+  <!-- Defs stay unchanged -->
+  <defs>
+    <!-- Eyelid / Skin gradient -->
+    <linearGradient id="lid3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7e7c6"/>
+      <stop offset="50%" stop-color="#e0c9a0"/>
+      <stop offset="100%" stop-color="#bba479"/>
+    </linearGradient>
+
+    <!-- Inner shadow on eyelid rim -->
+    <radialGradient id="lidShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0.15)"/>
+    </radialGradient>
+
+    <!-- Sclera 3D ball shading -->
+    <radialGradient id="sclera3D" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#eeeeee"/>
+      <stop offset="100%" stop-color="#cccccc"/>
+    </radialGradient>
+
+    <!-- Iris gradient with inner glow -->
+    <radialGradient id="irisGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#66f2ff"/>
+      <stop offset="40%" stop-color="#0095b2"/>
+      <stop offset="100%" stop-color="#002e3a"/>
+    </radialGradient>
+
+  </defs>
+</svg>
+
+
+
+
+  <div class="hero-content" data-aos="fade-up">
+    <h1 class="hero-name" id="hero-name" data-text="{{ profile.name }}"></h1>
+    <h2 class="hero-title" id="hero-title" data-text="{{ profile.title }}"></h2>
+    <p class="hero-tagline" id="hero-tagline" data-text='"Where creativity meets code — building what others only imagine."'></p>
+
+    <div class="hero-buttons">
+      {% if profile.resume %}
+        <a href="{{ profile.resume.url }}" class="btn" download> Download Resume</a>
+      {% endif %}
+      <a href="#projects" class="btn-secondary" role="button">View Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT ME -->
+<section class="about-section" data-aos="fade-up">
+  <div class="about-card"> 
+    <div class="about-left">
+      <img src="{{ profile.profile_image.url }}" alt="Profile" class="about-img" loading="lazy"/>
+    </div>
+    <div class="about-right" data-aos="fade-up">
+      <h2 id="about-heading">About Me</h2>
+      <p id="about-text">{{ profile.bio }}</p>
+      <p><strong>Email:</strong> {{ profile.email }}</p>
+      <p><strong>Phone:</strong>{{ profile.phone }}</p>
+      <p><strong>Address:</strong> {{ profile.address }}</p>
+      
+
+      {% if profile.social_links %}
+        <div class="social-icons">
+          {% for key, link in profile.social_links.items %}
+            <a href="{{ link }}" target="_blank" class="icon {{ key }}">
+              <i class="fab fa-{{ key }}"></i>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+<!-- SKILLS -->
+<section class="skills-icons" data-aos="fade-up">
+
+  <h2>My ToolBox </h2>
+
+  <div class="tech-category" data-aos="fade-up">
+    <h3>Front-End</h3>
+    <div class="icons-row">
+      <span><img src="{% static 'icons/html.svg' %}" alt="HTML" loading="lazy"><p>HTML</p></span>
+      <span><img src="{% static 'icons/css.svg' %}" alt="CSS" loading="lazy"><p>CSS</p></span>
+      <span><img src="{% static 'icons/js.svg' %}" alt="JavaScript" loading="lazy"><p>JavaScript</p></span>
+      <span><img src="{% static 'icons/react.svg' %}" alt="React" loading="lazy"><p>React</p></span>
+      <span><img src="{% static 'icons/bootstrap.svg' %}" alt="Bootstrap" loading="lazy"><p>Bootstrap</p></span>
+    </div>
+  </div>
+
+  <div class="tech-category" data-aos="fade-up">
+    <h3>Backend-End</h3>
+    <div class="icons-row">
+      <span><img src="{% static 'icons/python.svg' %}" alt="Python" loading="lazy"><p>Python</p></span>
+      <span><img src="{% static 'icons/django.svg' %}" alt="Django" loading="lazy"><p>Django</p></span>
+      <span><img src="{% static 'icons/mysql.svg' %}" alt="MySQL" loading="lazy"><p>MySQL</p></span>
+      <span><img src="{% static 'icons/mongodb.svg' %}" alt="MongoDB" loading="lazy"><p>MongoDB</p></span>
+      <span><img src="{% static 'icons/nodejs.svg' %}" alt="Node.js" loading="lazy"><p>Nodejs</p></span>
+    </div>
+  </div>
+
+  <!-- <div class="tech-category">
+    <h3>Python Libraries</h3>
+    <div class="icons-row">
+      <img src="{% static 'icons/numpy.svg' %}" alt="NumPy">
+      <img src="{% static 'icons/pandas.svg' %}" alt="Pandas">
+      <img src="{% static 'icons/matplotlib.svg' %}" alt="Matplotlib">
+      <img src="{% static 'icons/seaborn.svg' %}" alt="Seaborn">
+    </div>
+  </div> -->
+
+  <div class="tech-category" data-aos="fade-up">
+    <h3>Tools</h3>
+    <div class="icons-row">
+      
+      <span><img src="{% static 'icons/postman.svg' %}" alt="postman"  loading="lazy"/><p>Postman</p></span>
+      <span><img src="{% static 'icons/vscode.svg' %}" alt="VS Code"  loading="lazy"/><p>Vs Code</p></span>
+      <span><img src="{% static 'icons/firebase.svg' %}" alt="FireBase"  loading="lazy"/><p>Firebase Studio</p></span>
+      <span><img src="{% static 'icons/git.svg' %}" alt="Git"  loading="lazy"/><p>Git</p></span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects" data-aos="fade-up">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    {% for project in projects %}
+      <div class="project-card">
+        {% if project.image %}
+          <img src="{{ project.image.url }}" alt="{{ project.title }} " class="project-image"  loading="lazy"/>
+        {% endif %}
+        <h3>{{ project.title }}</h3>
+        <div class="project-links">
+          {% if project.github_link %}
+            <a href="{{ project.github_link }}" target="_blank">GitHub</a>
+          {% endif %}
+          {% if project.live_demo_link %}
+            <a href="{{ project.live_demo_link }}" target="_blank">Live Demo</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+<div class="scroll-to-top fas fa-hand-point-up" id="scrollToTop" title="Move to top"></div>
+{% endblock %}

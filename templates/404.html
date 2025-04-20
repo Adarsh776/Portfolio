@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block content %}
+<section style="text-align: center; padding: 100px 20px;">
+  <h1 style="font-size: 64px; color: #00bcd4;">404</h1>
+  <p style="font-size: 20px;">Oops! The page you're looking for doesn't exist.</p>
+  <a href="{% url 'overview' %}" class="btn-secondary" style="margin-top: 20px;">⬅ Go Home</a>
+</section>
+{% endblock %}

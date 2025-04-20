@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<h2 >Contact Me</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <p class="alert-success">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<form method="post" data-aos="fade-up">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+</form>
+{% endblock %}

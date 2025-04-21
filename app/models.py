@@ -27,7 +27,7 @@ class SkillModel(models.Model):
 class ProjectModel(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
-    image = CloudinaryField('image', folder='projects', blank=True, null=True)
+    image = models.ImageField(upload_to='projects/', blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
     live_demo_link = models.URLField(blank=True, null=True)
     tech_stack = models.CharField(max_length=200)  # e.g. Django, React, PostgreSQL

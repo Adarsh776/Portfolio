@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Add your domain name here
 ALLOWED_HOSTS = ['portfolio-5n42.onrender.com', 'localhost', '127.0.0.1', '.onrender.com']
@@ -104,14 +104,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': config('DB_NAME'),
-    #     'USER': config('DB_USER'),
-    #     'PASSWORD': config('DB_PASSWORD'),  # Replace with your PostgreSQL password
-    #     'HOST': config('DB_HOST'),
-    #     'PORT': config('DB_PORT')
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),  # Replace with your PostgreSQL password
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT')
+    }
 }
 
 

@@ -1,4 +1,16 @@
 import os
+import sys
+import django
+from pathlib import Path
+
+# Add the project root directory to the Python path
+project_root = Path(__file__).resolve().parent
+sys.path.append(str(project_root))
+
+# Set up Django environment
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+django.setup()
+
 import cloudinary.uploader
 from django.core.files.storage import default_storage
 from app.models import ProfileModel, ProjectModel
@@ -38,11 +50,6 @@ def migrate_project_images():
                 print(f"Error migrating project image for {project.title}: {str(e)}")
 
 if __name__ == "__main__":
-    import django
-    import os
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
-    django.setup()
-    
     print("Starting media migration to Cloudinary...")
     migrate_profile_images()
     migrate_project_images()

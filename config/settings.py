@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 ]
 
 
-# Cloudinary settings
+# Cloudinary setting
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'adarsh-portfolio',
     'API_KEY': '533871148271362',

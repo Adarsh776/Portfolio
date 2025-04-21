@@ -47,6 +47,19 @@ INSTALLED_APPS = [
     'cloudinary_storage'
 ]
 
+
+# Cloudinary settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'adarsh-portfolio',
+    'API_KEY': '533871148271362',
+    'API_SECRET': 'foIecHXJZNfyoA1BkeFYQzphnKM'
+}
+
+# Media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Use Cloudinary for media storage
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     
 
@@ -153,10 +166,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')        # Your Gmail address
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')   # App password, NOT your Gmail password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
 # Logging configuration
 LOGGING = {

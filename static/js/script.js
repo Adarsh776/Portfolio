@@ -3,7 +3,9 @@ const toggle = document.getElementById("mode-toggle"),
 let currentTheme = localStorage.getItem("theme") || "custom";
 
 function applyTheme(e) {
-   body.classList.remove("light-mode", "dark-mode", "custom-mode"), "dark" === e ? (body.classList.add("dark-mode"), toggle.innerHTML = " 🌙 ") : "custom" === e ? (body.classList.add("custom-mode"), toggle.textContent = " 💠 ") : toggle.textContent = " ☀️ ", localStorage.setItem("theme", e)
+   body.classList.remove("light-mode", "dark-mode", "custom-mode"),  
+   "dark" === e ? (body.classList.add("dark-mode"), toggle.innerHTML = '<span class="fa-solid fa-moon fa-lg"></span>') : "custom" === e ? (body.classList.add("custom-mode"), 
+   toggle.innerHTML = '<span class="fa-solid fa-robot fa-lg" style="color: #789fe3;"></span>') : toggle.innerHTML = '<span class="fa-solid fa-cloud-sun fa-lg"></span>', localStorage.setItem("theme", e)
 }
 applyTheme(currentTheme), toggle.addEventListener("click", (() => {
    currentTheme = "light" === currentTheme ? "dark" : "dark" === currentTheme ? "custom" : "light", applyTheme(currentTheme)
